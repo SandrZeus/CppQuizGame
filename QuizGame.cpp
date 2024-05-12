@@ -1,36 +1,30 @@
 #include <iostream>
 #include <string>
 
-int searchArray(std::string array[], int size, std::string element);
+
 
 int main(){
 
-    std::string numbers[] = {"Pizza", "Hamburgers", "Hotdog"};
-    int size = sizeof(numbers)/sizeof(numbers[0]);
-    int index;
-    std::string myNum;
-
-    std::cout << "Enter element to search for: " << '\n';
-    std::getline(std::cin, myNum);
-
-    index = searchArray(numbers, size, myNum);
-
-    if(index != -1){
-        std::cout << myNum << " is at index " << index;
+    std::string foods[5];
+    int size = sizeof(foods)/sizeof(foods[0]);
+    std::string temp;
+    
+    for(int i = 0; i < size; i++){
+        std::cout << "Enter a food you like or 'q' to quit #" << i + 1 << ": ";
+        std::getline(std::cin, temp);
+        if(temp == "q"){
+            break;
+        }
+        else{
+            foods[i] = temp;
+        }
     }
-    else{
-        std::cout << myNum << " is not in the array";
+
+    std::cout << "You like the following food: \n";
+
+    for(int i = 0; !foods[i].empty(); i++){
+        std::cout << foods[i] << '\n';
     }
 
     return 0;
-
-}
-int searchArray(std::string array[], int size, std::string element){
-
-    for(int i = 0; i < size; i++){
-        if(array[i] == element){
-            return i;
-        }
-    }
-    return -1;
 }
